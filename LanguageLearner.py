@@ -1,21 +1,21 @@
-
+import random
 words = [
     {"spanish": "el", "english": "the (masculine)"},
     {"spanish": "la", "english": "the (feminine)"},
     {"spanish": "de", "english": "of"},
-    {"spanish": "que", "english": "that/which"},
+    {"spanish": "que", "english": ["that/which"]},
     {"spanish": "y", "english": "and"},
     {"spanish": "a", "english": "to"},
-    {"spanish": "en", "english": "in/on"},
-    {"spanish": "un", "english": "a/an (masculine)"},
-    {"spanish": "una", "english": "a/an (feminine)"},
+    {"spanish": "en", "english": ["in/on"]},
+    {"spanish": "un", "english": ["a/an (masculine)"]},
+    {"spanish": "una", "english": ["a/an (feminine)"]},
     {"spanish": "es", "english": "is (he/she/it)"},
     {"spanish": "no", "english": "no"},
     {"spanish": "sí", "english": "yes"},
-    {"spanish": "por", "english": "by/for"},
+    {"spanish": "por", "english": ["by/for"]},
     {"spanish": "con", "english": "with"},
-    {"spanish": "para", "english": "for/to"},
-    {"spanish": "como", "english": "like/as"},
+    {"spanish": "para", "english": ["for/to"]},
+    {"spanish": "como", "english": ["like/as"]},
     {"spanish": "yo", "english": "I"},
     {"spanish": "tú", "english": "you (informal singular)"},
     {"spanish": "él", "english": "he"},
@@ -31,25 +31,25 @@ words = [
     {"spanish": "ser", "english": "to be (essential)"},
     {"spanish": "estar", "english": "to be (state/location)"},
     {"spanish": "tener", "english": "to have"},
-    {"spanish": "hacer", "english": "to do/make"},
-    {"spanish": "poder", "english": "to be able to/can"},
+    {"spanish": "hacer", "english": ["to do/make"]},
+    {"spanish": "poder", "english": ["to be able to/can"]},
     {"spanish": "decir", "english": "to say"},
     {"spanish": "ir", "english": "to go"},
     {"spanish": "ver", "english": "to see"},
     {"spanish": "dar", "english": "to give"},
     {"spanish": "saber", "english": "to know (information)"},
-    {"spanish": "querer", "english": "to want/love"},
+    {"spanish": "querer", "english": ["to want/love"]},
     {"spanish": "llegar", "english": "to arrive"},
-    {"spanish": "pasar", "english": "to pass/happen"},
-    {"spanish": "deber", "english": "should/must"},
-    {"spanish": "poner", "english": "to put/place"},
+    {"spanish": "pasar", "english": ["to pass/happen"]},
+    {"spanish": "deber", "english": ["should/must"]},
+    {"spanish": "poner", "english": ["to put/place"]},
     {"spanish": "parecer", "english": "to seem"},
-    {"spanish": "quedar", "english": "to stay/remain"},
+    {"spanish": "quedar", "english": ["to stay/remain"]},
     {"spanish": "creer", "english": "to believe"},
     {"spanish": "hablar", "english": "to speak"},
-    {"spanish": "llevar", "english": "to carry/take"},
+    {"spanish": "llevar", "english": ["to carry/take"]},
     {"spanish": "dejar", "english": "to leave (something)"},
-    {"spanish": "seguir", "english": "to follow/continue"},
+    {"spanish": "seguir", "english": ["to follow/continue"]},
     {"spanish": "encontrar", "english": "to find"},
     {"spanish": "llamar", "english": "to call"},
     {"spanish": "venir", "english": "to come"},
@@ -69,13 +69,13 @@ words = [
     {"spanish": "entender", "english": "to understand"},
     {"spanish": "pedir", "english": "to ask for"},
     {"spanish": "necesitar", "english": "to need"},
-    {"spanish": "esperar", "english": "to wait/hope"},
+    {"spanish": "esperar", "english": ["to wait/hope"]},
     {"spanish": "usar", "english": "to use"},
     {"spanish": "pagar", "english": "to pay"},
     {"spanish": "cambiar", "english": "to change"},
-    {"spanish": "mirar", "english": "to watch/look at"},
+    {"spanish": "mirar", "english": ["to watch/look at"]},
     {"spanish": "ayudar", "english": "to help"},
-    {"spanish": "empezar", "english": "to begin/start"},
+    {"spanish": "empezar", "english": ["to begin/start"]},
     {"spanish": "caminar", "english": "to walk"},
     {"spanish": "comprar", "english": "to buy"},
     {"spanish": "estudiar", "english": "to study"},
@@ -95,13 +95,35 @@ words = [
     {"spanish": "andar", "english": "to walk"},
     {"spanish": "perder", "english": "to lose"},
     {"spanish": "ganar", "english": "to win"},
-    {"spanish": "buscar", "english": "to search/look for"}
+    {"spanish": "buscar", "english": ["to search/look for"]}
 
 ]
+
+def quiz_user(words):
+    random.shuffle(words)
+    score = 0 
+
+    for word in words:
+        print(f"What is the english translation of '{word['spanish']}?")
+        user_answer = input("Your Answer: ").strip().lower()
+        correct_answer = word['english'].lower()
+
+        if user_answer == correct_answer:
+            print("Correct!\n")
+            score += 1
+        else:
+            print(f"Wrong! The correct answer is '{word['english']}'. \n")
+
+    print(f"Quiz complete! Your score: {score}/{len(words)}")
+        
 
 
 def main():
     print("Welcome to the Language Learning Flashcards App!")
     input("Press Enter to start the quiz...")
+    quiz_user(words)
 
+
+if __name__ == "__main__":
+    main()  
     
